@@ -6,6 +6,11 @@
     <title>Your Website Title</title>
     <link rel="stylesheet" href="/statics/styles.css">
 </head>
+<?php
+$is_logged = $_COOKIE['is_logged'];
+$username = $_COOKIE['thexnumb'];
+if ($is_logged === 'true' and !isNull($username)){
+?>
 <body>
     <header>
         <h1>Your Website</h1>
@@ -15,13 +20,33 @@
         <a href="#">Write</a>
         <a href="#">Posts</a>
         <a href="#">Settings</a>
+        <a href="#">Logout</a>
     </nav>
     <section>
         <h2>Welcome to Your Panel</h2>
         <p>This is a simple HTML template. You can customize it to suit your needs.</p>
     </section>
-    <footer>
-        <p>&copy; 2024 TheXnumnb. All rights reserved.</p>
+    
+<?php 
+    }else{
+?>
+ <script>
+        // Function to redirect to a URL after a specified time
+        function redirectTo(url, delay) {
+            setTimeout(function() {
+                window.location.href = url;
+            }, delay);
+        }
+
+        // Call redirectTo function with URL and delay time
+        redirectTo("/login.php", 2000); // Redirects after 2 seconds (5000 milliseconds)
+    </script>
+     <p>You will be redirected to Login Page.</p>
+<?php
+}
+?>
+<footer>
+        <p>&copy; 2024 TheXnumb. All rights reserved.</p>
     </footer>
 </body>
 </html>
