@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Website Title</title>
-    <link rel="stylesheet" href="/statics/styles.css">
+    <link rel="stylesheet" href="/statics/styles_user_panel.css">
+    <script src="/statics/functions.js"></script>
 </head>
 <?php
 $is_logged = $_COOKIE['is_logged'];
-$username = $_COOKIE['thexnumb'];
-if ($is_logged === 'true' and !isNull($username)){
+$user = $_COOKIE['username'];
+if ($is_logged === 'true' and !is_null($user)){
 ?>
 <body>
     <header>
@@ -20,7 +21,7 @@ if ($is_logged === 'true' and !isNull($username)){
         <a href="#">Write</a>
         <a href="#">Posts</a>
         <a href="#">Settings</a>
-        <a href="#">Logout</a>
+        <a href="#" onclick="deleteAllCookies();redirect('/login.php')">Logout</a>
     </nav>
     <section>
         <h2>Welcome to Your Panel</h2>
@@ -28,7 +29,7 @@ if ($is_logged === 'true' and !isNull($username)){
     </section>
     
 <?php 
-    }else{
+}else{
 ?>
  <script>
         // Function to redirect to a URL after a specified time
