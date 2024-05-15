@@ -1,39 +1,31 @@
--- Create a new database for the weblog
-CREATE DATABASE IF NOT EXISTS weblog_db;
+-- for users tables
+CREATE TABLE users(
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    first_name VARCHAR(255) DEFAULT NULL,
+    last_name VARCHAR(255) DEFAULT NULL,
+    bio VARCHAR(2000) DEFAULT NULL,
+    registration_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE (username, email)
+);
 
--- Switch to the newly created database
-USE weblog_db;
-
--- Create a table for blog posts
-CREATE TABLE IF NOT EXISTS posts (
+-- for posts tables
+CREATE TABLE posts(
     post_id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
     content TEXT NOT NULL,
-    author VARCHAR(100) NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    author_id INT NOT NULL,
+    category_id INT NOT NULL,
+    publication_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Create a table for comments
-CREATE TABLE IF NOT EXISTS comments (
-    comment_id INT AUTO_INCREMENT PRIMARY KEY,
-    post_id INT NOT NULL,
-    commenter_name VARCHAR(100) NOT NULL,
-    comment_content TEXT NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (post_id) REFERENCES posts(post_id) ON DELETE CASCADE
-);
-
--- Create a table for categories
-CREATE TABLE IF NOT EXISTS categories (
+--for category
+CREATE TABLE category(
     category_id INT AUTO_INCREMENT PRIMARY KEY,
-    category_name VARCHAR(50) NOT NULL
+    category_name VARCHAR(255) NOT NULL,
+    category_description VARCHAR(2000) NOT NULL
 );
 
--- Create a table to establish many-to-many relationship between posts and categories
-CREATE TABLE IF NOT EXISTS post_category (
-    post_id INT,
-    category_id INT,
-    PRIMARY KEY (post_id, category_id),
-    FOREIGN KEY (post_id) REFERENCES posts(post_id) ON DELETE CASCADE,
-    FOREIGN KEY (category_id) REFERENCES categories(category_id) ON DELETE CASCADE
-);
+-- for tags
