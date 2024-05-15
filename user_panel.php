@@ -14,7 +14,7 @@ if ($is_logged === 'true' and !is_null($user)){
 ?>
 <body>
     <header>
-        <h1>Your Website</h1>
+        <h1>TheXnumb's Weblog</h1>
     </header>
     <nav>
         <a href="#">Panel</a>
