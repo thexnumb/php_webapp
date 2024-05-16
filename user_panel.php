@@ -28,7 +28,7 @@ if ($is_logged === 'true' and !is_null($user_id)){
         <h2>Welcome to Your Panel</h2>
         <p>This is a simple HTML template. You can customize it to suit your needs.</p>
     </section>
-    
+
 <?php 
 }else{
 ?>
@@ -40,10 +40,9 @@ if ($is_logged === 'true' and !is_null($user_id)){
             }, delay);
         }
 
-        // Call redirectTo function with URL and delay time
-        redirectTo("/login.php", 2000); // Redirects after 2 seconds (5000 milliseconds)
+        redirectTo("/login.php", 2000);
     </script>
-     <p>You will be redirected to Login Page.</p>
+     <p>You will be redirected to Login Page!</p>
 <?php
 }
 ?>
