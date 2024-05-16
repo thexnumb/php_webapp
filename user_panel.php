@@ -9,14 +9,15 @@
 </head>
 <?php
 $is_logged = $_COOKIE['is_logged'];
-$user = $_COOKIE['username'];
-if ($is_logged === 'true' and !is_null($user)){
+$user_id = $_COOKIE['user_id'];
+if ($is_logged === 'true' and !is_null($user_id)){
 ?>
 <body>
     <header>
         <h1>TheXnumb's Weblog</h1>
     </header>
     <nav>
+        <a href="/user_panel.php">Wellcome <?php echo $_COOKIE['username']?> !</a>
         <a href="#">Panel</a>
         <a href="#">Write</a>
         <a href="#">Posts</a>
