@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
-    <link rel="stylesheet" href="/statics/styles_login.css">
-</head>
-<body>
 <?php
+include 'header.php';
 include 'db/db.php';
 $error_message = ""; // Initialize error message variable
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -38,14 +30,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required>
         <button type="submit">Login</button>
+        <button onclick="window.location.href='register.php';">Registration?</button>
+
     </form>
     <?php
     if (!empty($error_message)) // Corrected: Changed !is_null to !empty
         echo "<p>$error_message</p>";
+    
+    include 'footer.php';
     ?>
-</div>
-<footer>
-    <p>&copy; 2024 TheXnumb. All rights reserved.</p>
-</footer>
-</body>
-</html>
